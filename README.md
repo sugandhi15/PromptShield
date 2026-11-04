@@ -145,25 +145,24 @@ For complete operational definitions, decision rules, precedence policies, and t
 PromptShield/
 ├── README.md
 ├── annotation_guidelines.pdf
-└── data/
-    └── promptshield_sample.csv
+└── data
 ```
 
-The `data/` directory contains the public dataset sample, including examples in English, Hindi, and Hinglish.
+The `data` file contains the public dataset sample, including examples in English, Hindi, and Hinglish.
 
 ## Dataset Format
 
-The dataset is provided as a single CSV file containing examples from all three language settings.
+The dataset is provided as a single file containing examples from all three language settings.
 
-| Field | Description |
-|---|---|
-| `annotation_id` | Unique identifier for a prompt |
-| `text` | Prompt text |
-| `language` | Language of the prompt: English, Hindi, or Hinglish |
-| `binary_label` | `0` for Safe, `1` for Attack |
-| `primary_class` | Primary class name or canonical class ID |
+| **Field**       | **Description**                                     |
+| --------------- | --------------------------------------------------- |
+| `annotation_id` | Unique identifier for a prompt                      |
+| `text`          | Prompt text                                         |
+| `language`      | Language of the prompt: English, Hindi, or Hinglish |
+| `binary_label`  | `0` for Safe, `1` for Attack                        |
+| `primary_class` | Primary class name or canonical class ID            |
 
-*Note: The column names above are illustrative. Refer to the actual CSV schema for the exact field names.*
+*Note: The column names above are illustrative. Refer to the actual dataset schema for the exact field names.*
 
 ---
 
@@ -177,7 +176,7 @@ You can load the complete public sample using Python and pandas.
 import pandas as pd
 
 # Load the complete dataset
-dataset = pd.read_csv("data/promptshield_sample.csv")
+dataset = pd.read_csv("data")
 
 print("Total examples:", len(dataset))
 print(dataset.head())

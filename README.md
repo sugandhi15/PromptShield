@@ -149,10 +149,7 @@ PromptShield/
 ├── README.md
 ├── LICENSE
 ├── annotation_guidelines.pdf
-└── data/
-    ├── english.csv
-    ├── hindi.csv
-    └── hinglish.csv
+└── data
 ```
 
 The filenames above illustrate a suggested structure. Actual filenames may differ depending on how the repository is organized.

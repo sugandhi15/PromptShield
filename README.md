@@ -23,7 +23,6 @@ This repository provides a **public sample of 300 annotated prompts**, with 100 
 - [Usage](#usage)
 - [Research Applications](#research-applications)
 - [Limitations](#limitations)
-- [Citation](#citation)
 - [Contributing](#contributing)
 
 ---

@@ -2,9 +2,9 @@
 
 **English | Hindi | Hinglish | 11-Class Classification | LLM Security**
 
-PromptShield is a research project focused on detecting prompt-injection attacks across English, Hindi, and Hinglish. It explores the classification of malicious instructions, jailbreak attempts, information-extraction requests, and other attack behaviors that may compromise the intended behavior of large language models (LLMs).
+PromptShield is an academic study whose aim is the detection of prompt injection attacks in English, Hindi, and Hinglish. It investigates the classification of malicious instructions, jailbreaking attacks, requests for information extraction, and other types of attacks which could potentially cause deviation from the intended behavior of LLMs.
 
-This repository provides a **public sample of 300 annotated prompts**, with 100 examples per language, to support transparency, reproducibility, and further research in multilingual prompt-injection detection.
+In this repository, you can find a set of 300 samples of annotated prompts, each language has 100 samples.
 
 > **Note:** This repository contains a public sample of the dataset, not the complete research dataset.
 
@@ -29,13 +29,13 @@ This repository provides a **public sample of 300 annotated prompts**, with 100 
 
 ## Overview
 
-Prompt injection is a security challenge in which instructions supplied by users or embedded in external content attempt to override an LLM's intended instructions, bypass safeguards, or obtain protected information.
+Prompt injection is a security issue where instructions provided by users or in external sources try to subvert the LLM’s intended instructions or acquire sensitive information.
 
-Detecting these attacks becomes more challenging in multilingual and code-mixed settings, where malicious intent may be expressed through different scripts, transliteration, spelling variations, or a mixture of languages.
+Identifying such attacks becomes harder in multilingual or code-mixed contexts, since malicious intent can be communicated in different writing systems, via transliteration, misspellings, or mixed languages.
 
-PromptShield investigates this problem through an **11-class prompt taxonomy** comprising one Safe class and ten attack categories.
+PromptShield researches this problem by developing an **11-class prompt taxonomy** that includes one Safe category and ten attacks.
 
-The annotation framework emphasizes the intended behavior of a prompt rather than the presence of individual keywords. This helps distinguish genuine attacks from benign educational discussions, security analyses, translations, and quoted examples.
+The annotation process focuses on the desired behavior of a prompt rather than presence of specific keywords. It allows distinguishing between real attacks and non-threatening conversations regarding education, security analysis, translation, etc.
 
 ## Key Features
 
@@ -62,7 +62,7 @@ The annotation framework emphasizes the intended behavior of a prompt rather tha
 
 The public sample demonstrates the dataset structure, language coverage, label taxonomy, and annotation conventions.
 
-The equal number of examples per language does not imply that all classes are equally represented. Refer to the associated research paper for details about the complete dataset and experimental setup.
+Equal number of examples for each language doesn’t mean that there is an equal representation of classes. You can refer to the research paper for further information on the whole dataset.
 
 ---
 
@@ -105,37 +105,37 @@ PromptShield follows a structured annotation guideline designed to improve consi
 
 ### 1. Intent Over Keywords
 
-Words such as `ignore`, `password`, `system prompt`, and `jailbreak` do not automatically make a prompt malicious. Annotators must read the complete prompt and determine what behavior it requests or enacts.
+Terms like `ignore`, `password`, `system prompt`, `jailbreak`, for example, do not imply that the prompt is inherently malicious. The annotators have to go through the full prompt and see what behavior is required.
 
 ### 2. Safe Educational and Analytical Content
 
-A prompt that asks for an explanation, translation, summary, or classification of a malicious example is not automatically an attack. It should be labeled Safe when it does not itself request or enact an attack behavior.
+A question that requests an explanation, translation, summary, or classification of a harmful example cannot be considered an attack by default. It can be classified as Safe if it does not contain any elements of an attack behavior itself.
 
 ### 3. One Primary Class Per Prompt
 
-Each prompt receives exactly one primary class. When multiple attack behaviors are present, the annotation guideline provides proposed precedence rules for selecting the primary class.
+One and only one primary class is identified for each prompt. In case there is more than one attacking behavior, a suggested precedence rule is included in the annotation guide.
 
 ### 4. Direct Versus Indirect Injection
 
-Direct instructions from a user are distinguished from malicious instructions embedded in untrusted documents, webpages, emails, transcripts, or other external content that the model is expected to process.
+User's direct commands are separated from malicious commands which have been planted within untrusted documents, web pages, email messages, transcripts or any other external material which the system is supposed to parse.
 
 ### 5. Specific Targets and Attack Mechanisms
 
-Annotators distinguish attempts to extract hidden system instructions from attempts to obtain credentials or private data. Encoding and obfuscation are considered according to whether concealment is the defining attack mechanism.
+Annotators differentiate attacks aimed at getting confidential system instructions from attacks that seek to acquire credentials or confidential data. Encoding/obfuscation is taken into account if it is the primary attack technique used.
 
 ### 6. Context and Multi-Turn Behavior
 
-Multi-Turn Escalation is assigned only when preceding turns or a documented sequence provide sufficient evidence. An isolated prompt should not be labeled as a multi-turn attack without supporting context.
+Only in the case where there is enough evidence from prior turns or a sequence that has been recorded is Multi-Turn Escalation assigned. Isolated prompts must never be classified as Multi-Turn attacks.
 
 ### 7. Language-Independent Interpretation
 
-The same class definitions apply across English, Hindi, and Hinglish. Transliteration, spelling variations, deliberate typos, and unfamiliar scripts do not automatically make an attack Safe.
+Definitions of classes remain constant irrespective of whether the language used is English, Hindi, or Hinglish. Transliteration, variations in spelling, intentional misspellings, and foreign script alone do not make an attack safe.
 
 ### 8. Ambiguity and Adjudication
 
-Genuinely ambiguous or unintelligible examples should be flagged for review rather than assigned a speculative label. Where supported by the annotation records, original labels and adjudicated labels should be preserved separately.
+Such examples that are truly ambiguous or not understandable should be marked for review and not labeled. Where the labeling can be justified by the annotation information, the original labels as well as the adjudicated labels should be retained.
 
-For complete operational definitions, decision rules, precedence policies, and the annotator checklist, refer to the annotation guidelines provided with this project.
+For complete definitions of operation, decision rule, precedence policy, and the annotator checklist, please see the annotation guidelines accompanying this project.
 
 ---
 
@@ -235,35 +235,35 @@ The binary label uses `0` for Safe and `1` for Attack, consistent with the 11-cl
 
 ## Research Applications
 
-The public sample may be useful for:
+The public sample can be used for the following purposes:
 
-- Understanding the PromptShield annotation taxonomy.
-- Exploring multilingual prompt-injection examples.
-- Prototyping binary and multiclass classification pipelines.
-- Developing annotation tools and reviewing labeling decisions.
-- Studying distinctions between safe discussion and actionable attack behavior.
-- Designing preliminary experiments for multilingual LLM security research.
+- For learning about PromptShield annotation scheme taxonomy.
+- For examining multilingual prompt injection cases.
+- For implementing binary & multiclass classification pipelines prototypes.
+- For creating annotation tools and reviewing labeled data.
+- For studying the differences between safe conversation & actionable attacks.
+- For creating experiments prototypes for multilingual LLM security research.
 
-The sample is intended for exploration and prototyping. It should not be treated as a substitute for the complete dataset when conducting benchmark comparisons or drawing broad performance conclusions.
+It is meant for exploratory & prototyping work, and cannot be considered as an alternative to the full dataset for performing benchmarking & performance evaluation tasks.
 
 ## Limitations
 
-- **Limited public sample:** Only 100 prompts per language are included.
-- **Potential class imbalance:** Equal sample sizes across languages do not imply equal representation of all 11 classes.
-- **Annotation ambiguity:** Some prompts may support multiple interpretations or attack categories.
-- **Language coverage:** The three language settings do not represent every dialect, script, or code-mixing pattern.
-- **Context dependence:** Indirect Injection and Multi-Turn Escalation may require additional context to be interpreted correctly.
-- **Detection is not prevention:** A classifier's prediction alone cannot guarantee that an LLM is protected against prompt injection.
+- **Small public sample size:** A mere 100 prompts per language are used.
+- **Imbalanced classes in public data:** Balanced number of samples in each language does not mean balanced representation of 11 classes.
+- **Annotating issues:** Some prompts might lend themselves to several annotations or attack types.
+- **Language limitation:** These three language configurations are just the example of all possible languages and codes.
+- **Context-based detection methods:** Indirect Injection and Multi-Turn Escalation might need further contextual information for their proper understanding.
+- **Detection and prevention difference:** A classifier's classification result does not provide protection of LLM from the prompt injection itself.
 
-Results obtained using this small public subset should be interpreted cautiously.
+These results should be carefully analyzed due to the limited use of public dataset.
 
 ---
 
 ## Contributing
 
-Suggestions, issue reports, and research discussions related to the annotation taxonomy, multilingual coverage, and dataset usability are welcome.
+Discussion on the annotation taxonomy, multi-language support, and data usefulness is appreciated. 
 
-When proposing annotation changes, prioritize explicit decision rules, consistency, and reproducibility. Changes to class definitions or precedence rules should be documented and versioned rather than introduced solely to increase inter-annotator agreement.
+In suggesting modifications for annotations, consider clear decision rules, consistency, and reproducibility. Modifying the classes themselves or their precedence rules cannot simply be done based on improving the rate of agreement.
 
 ## Acknowledgements
 

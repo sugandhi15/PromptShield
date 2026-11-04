@@ -141,86 +141,96 @@ For complete operational definitions, decision rules, precedence policies, and t
 
 ## Dataset Structure
 
-The repository can be organized as follows:
-
 ```text
 PromptShield/
 ├── README.md
 ├── annotation_guidelines.pdf
-└── data
+└── data/
+    └── promptshield_sample.csv
 ```
 
-The filenames above illustrate a suggested structure. Actual filenames may differ depending on how the repository is organized.
+The `data/` directory contains the public dataset sample, including examples in English, Hindi, and Hinglish.
 
 ## Dataset Format
 
-The public sample is provided in CSV format, with one file per language.
-
-### Recommended Fields
+The dataset is provided as a single CSV file containing examples from all three language settings.
 
 | Field | Description |
 |---|---|
 | `annotation_id` | Unique identifier for a prompt |
 | `text` | Prompt text |
-| `language` | English, Hindi, or Hinglish |
+| `language` | Language of the prompt: English, Hindi, or Hinglish |
 | `binary_label` | `0` for Safe, `1` for Attack |
 | `primary_class` | Primary class name or canonical class ID |
 
-The annotation guidelines additionally recommend fields for annotator identity, confidence, rationale, adjudication status, adjudicated class, adjudication reason, and guideline version where applicable.
-
-Only fields actually included in the released files should be documented as present in the dataset.
-
----
-
-## Languages and Code-Mixed Text
-
-PromptShield covers three language settings:
-
-- **English:** Prompts written in English.
-- **Hindi:** Prompts expressed in Hindi, including the scripts represented in the dataset.
-- **Hinglish:** Prompts mixing Hindi and English, including common transliteration and code-switching patterns.
-
-The annotation framework focuses on semantic intent rather than language or script. The same underlying behavior should receive a consistent class even when expressed through different linguistic forms.
-
-The public sample offers an initial view of this multilingual setting. It does not, by itself, establish coverage across all Hindi dialects, scripts, transliteration patterns, or code-mixed expressions.
+*Note: The column names above are illustrative. Refer to the actual CSV schema for the exact field names.*
 
 ---
 
 ## Usage
 
-You can inspect the public sample using Python and pandas.
+You can load the complete public sample using Python and pandas.
 
-### Load the Dataset
+### 1. Load the Dataset
 
 ```python
 import pandas as pd
 
-english = pd.read_csv("data/english.csv")
-hindi = pd.read_csv("data/hindi.csv")
-hinglish = pd.read_csv("data/hinglish.csv")
+# Load the complete dataset
+dataset = pd.read_csv("data/promptshield_sample.csv")
 
-dataset = pd.concat(
-    [english, hindi, hinglish],
-    ignore_index=True
-)
-
-print("Total public examples:", len(dataset))
+print("Total examples:", len(dataset))
 print(dataset.head())
 ```
 
-### Inspect Class Distribution
-
-```python
-print(dataset["primary_class"].value_counts())
-```
-
-### Inspect Language Distribution
+### 2. Explore Language Distribution
 
 ```python
 print(dataset["language"].value_counts())
 ```
 
-These examples assume the files and columns follow the illustrated structure. Update the file paths or column names if your actual schema differs.
+This displays the number of examples available for each language.
+
+### 3. Filter Examples by Language
+
+```python
+# English examples
+english = dataset[dataset["language"] == "English"]
+
+# Hindi examples
+hindi = dataset[dataset["language"] == "Hindi"]
+
+# Hinglish examples
+hinglish = dataset[dataset["language"] == "Hinglish"]
+
+print("English:", len(english))
+print("Hindi:", len(hindi))
+print("Hinglish:", len(hinglish))
+```
+
+### 4. Explore Class Distribution
+
+```python
+print(dataset["primary_class"].value_counts())
+```
+
+To examine class distribution separately for each language:
+
+```python
+print(
+    dataset.groupby(["language", "primary_class"])
+    .size()
+    .unstack(fill_value=0)
+)
+```
+
+### 5. Explore Binary Labels
+
+```python
+print(dataset["binary_label"].value_counts())
+```
+
+The binary label uses `0` for Safe and `1` for Attack, consistent with the 11-class annotation scheme.
 
 ---
 

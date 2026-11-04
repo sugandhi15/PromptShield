@@ -255,22 +255,6 @@ Results obtained using this small public subset should be interpreted cautiously
 
 ---
 
-## Citation
-
-If you use PromptShield in your research, please cite the associated paper once its publication details are available.
-
-```bibtex
-@misc{promptshield,
-  title        = {PromptShield: A Multilingual Prompt-Injection Detection Dataset},
-  author       = {Bansal, Sugandhi and collaborators},
-  year         = {YEAR},
-  howpublished = {\url{GITHUB_REPOSITORY_URL}},
-  note         = {Public sample and annotation guidelines}
-}
-```
-
-Replace the placeholder year, author list, and repository URL with verified details. If the associated paper has a DOI or formal publication venue, prefer citing that publication.
-
 ## Contributing
 
 Suggestions, issue reports, and research discussions related to the annotation taxonomy, multilingual coverage, and dataset usability are welcome.

@@ -146,7 +146,6 @@ The repository can be organized as follows:
 ```text
 PromptShield/
 ├── README.md
-├── LICENSE
 ├── annotation_guidelines.pdf
 └── data
 ```
